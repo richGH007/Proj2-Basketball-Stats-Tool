@@ -112,17 +112,52 @@ if __name__ == "__main__":
                     print('C) Warriors')
                     print()
                     team_chose = (input("Enter an option: "))
+                    print()
+                    print()
+                    print()
                     if team_chose.upper() == 'A' or team_chose.upper() == 'B' or team_chose.upper() == 'C':
                         if team_chose.upper() == 'A':
-                            print('Picked Bandits')
+                            print('Team:  Bandits Stats')
+                            print('-' * 90)
+                            print(
+                                f'Total players: {bandits_players}   Experienced: {bandits_exp_players}   Inexperienced: {bandits_players - bandits_exp_players}   Average Height: {round(bandits_total_height/bandits_players, 1)}-inches')
+                            print()
+                            print(f'Players on Team: \n {", ".join(bandits)}')
+                            print()
+                            print(
+                                f'Bandits_Guardians: \n {", ".join(bandits_guardians)}')
+                            print('-' * 90)
+                            print()
+                            print()
                             option = False
                         if team_chose.upper() == 'B':
-                            print('Picked Panthers')
+                            print('Team:  Panthers Stats')
+                            print('-' * 90)
+                            print(
+                                f'Total players: {panthers_players}   Experienced: {panthers_exp_players}   Inexperienced: {panthers_players - panthers_exp_players}   Average Height: {round(panthers_total_height/panthers_players, 1)}-inches')
+                            print()
+                            print(f'Players on Team: \n {", ".join(panthers)}')
+                            print()
+                            print(
+                                f'Panthers_Guardians: \n {", ".join(panthers_guardians)}')
+                            print('-' * 90)
+                            print()
+                            print()
                             option = False
                         if team_chose.upper() == 'C':
-                            print('Picked Warriors')
+                            print('Team:  Warriors Stats')
+                            print('-' * 90)
+                            print(
+                                f'Total players: {warriors_players}   Experienced: {warriors_exp_players}   Inexperienced: {warriors_players - warriors_exp_players}   Average Height: {round(warriors_total_height/warriors_players, 1)}-inches')
+                            print()
+                            print(f'Players on Team: \n {", ".join(warriors)}')
+                            print()
+                            print(
+                                f'Warriors_Guardians: \n {", ".join(warriors_guardians)}')
+                            print('-' * 90)
+                            print()
+                            print()
                             option = False
-
                     else:
                         option = True
 
