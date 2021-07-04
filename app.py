@@ -4,6 +4,10 @@ from constants import PLAYERS
 team_list = TEAMS.copy()
 player_list = PLAYERS.copy()
 
+player_list_exp = []
+player_list_noob = []
+player_list_ordered = []
+
 bandits = []
 bandits_guardians = []
 panthers = []
@@ -11,51 +15,41 @@ panthers_guardians = []
 warriors = []
 warriors_guardians = []
 
-print()
-for player in player_list:
-    if (player['experience']) == 'YES':
-        player['experience'] = True
-    else:
-        player['experience'] = False
-    height, unit = player['height'].split(" ")
-    player['height'] = int(height)
-    if ' and ' in player['guardians']:
-        guard1, guard2 = player['guardians'].split(' and ')
-        player['guardians'] = guard1 + ", " + guard2
-        # print('* {}'.format(player['guardians'])) # prints if two guardians
-print()
 
-for player in player_list:
-    if len(bandits) <= len(panthers) and len(bandits) <= len(warriors):
-        bandits.append(player['name'])
-        bandits_guardians.append(player['guardians'])
-    elif len(panthers) <= len(bandits) and len(panthers) <= len(warriors):
-        panthers.append(player['name'])
-        panthers_guardians.append(player['guardians'])
-    elif len(warriors) <= len(bandits) and len(warriors) <= len(panthers):
-        warriors.append(player['name'])
-        warriors_guardians.append(player['guardians'])
-    else:
-        print('This player {} was not added.'.format(player['name']))
+def clean_data():
+    for player in player_list:
+        if (player['experience']) == 'YES':
+            player['experience'] = True
+        else:
+            player['experience'] = False
+        height, unit = player['height'].split(" ")
+        player['height'] = int(height)
+        if ' and ' in player['guardians']:
+            guard1, guard2 = player['guardians'].split(' and ')
+            player['guardians'] = guard1 + ", " + guard2
+            # print('* {}'.format(player['guardians'])) # prints if two guardians
 
-# print("bandits:  {}".format(bandits))  # prints bandits list
-# print("bandits_guardians:  {}".format(bandits_guardians)) # prints bandits_guardians list
-# print()
-# print("panthers: {}".format(panthers)) # prints panthers list
-# print("panthers_guardians: {}".format(panthers_guardians)) # prints panthers_guardians list
-# print()
-# print("warriors: {}".format(warriors)) # prints warriors list
-# print("warriors_guardians: {}".format(warriors_guardians)) # prints warriors_guardians list
-# print()
-print(f'Bandits: {", ".join(bandits)}')
-print(f'Bandits_Guardians: {", ".join(bandits_guardians)}')
-print()
-print(f'Panthers: {", ".join(panthers)}')
-print(f'Panthers_Guardians: {", ".join(panthers_guardians)}')
-print()
-print(f'Warriors: {", ".join(warriors)}')
-print(f'Warriors_Guardians: {", ".join(warriors_guardians)}')
 
-print()
-print()
-print()
+def add_to_exp_player(current_player):
+    player_list_exp.append(current_player)
+
+
+def add_to_noob_player(current_player):
+    player_list_noob.append(current_player)
+
+
+if __name__ == "__main__":
+
+    clean_data()
+
+    count_exp_player = 0
+    count_noob_player = 0
+    for player in player_list:
+        if (player['experience']):
+            add_to_exp_player(player)
+            count_exp_player += 1
+        else:
+            add_to_noob_player(player)
+            count_noob_player += 1
+    player_list_ordered = player_list_exp + player_list_noob
+    print(f'player_list_ordered: {player_list_ordered}')
