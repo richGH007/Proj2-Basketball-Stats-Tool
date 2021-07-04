@@ -92,13 +92,47 @@ if __name__ == "__main__":
         else:
             print('This player {} was not added.'.format(player['name']))
 
-    print("bandits:  {} with {} experienced".format(
-        bandits, bandits_exp_players))
-    print("panthers: {} with {} experienced".format(
-        panthers, panthers_exp_players))
-    print("warriors: {} with {} experienced".format(
-        warriors, warriors_exp_players))
+    view_stats = True
 
-    print(f'Bandits_Guardians: {", ".join(bandits_guardians)}')
-    print(f'Panthers_Guardians: {", ".join(panthers_guardians)}')
-    print(f'Warriors_Guardians: {", ".join(warriors_guardians)}')
+    while view_stats:
+        print('----MENU----')
+        print()
+        print('Here are your choices:')
+        print('A) Display Team Stats')
+        print('B) Quit')
+        print()
+        display = (input("Enter an Option: "))
+        if display.upper() == 'A' or display.upper() == "B":
+            if display.upper() == 'A':
+                option = True
+                while option:
+                    print()
+                    print('A) Bandits')
+                    print('B) Panthers')
+                    print('C) Warriors')
+                    print()
+                    team_chose = (input("Enter an option: "))
+                    if team_chose.upper() == 'A' or team_chose.upper() == 'B' or team_chose.upper() == 'C':
+                        if team_chose.upper() == 'A':
+                            print('Picked Bandits')
+                            option = False
+                        if team_chose.upper() == 'B':
+                            print('Picked Panthers')
+                            option = False
+                        if team_chose.upper() == 'C':
+                            print('Picked Warriors')
+                            option = False
+
+                    else:
+                        option = True
+
+                view_stats = True
+            else:
+                view_stats = False
+        else:
+            view_stats = True
+
+
+print()
+print('Exiting Team Stats Tool')
+print()
