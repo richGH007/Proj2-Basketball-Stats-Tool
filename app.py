@@ -1,8 +1,8 @@
-from constants import TEAMS
-from constants import PLAYERS
+import copy
+import constants
 
-team_list = TEAMS.copy()
-player_list = PLAYERS.copy()
+team_list = copy.deepcopy(constants.TEAMS)
+player_list = copy.deepcopy(constants.PLAYERS)
 
 player_list_exp = []
 player_list_noob = []
